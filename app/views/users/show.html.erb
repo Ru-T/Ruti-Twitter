@@ -9,3 +9,11 @@
 </p>
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 
+
+<strong>Tweets:</strong>
+
+<% @user.tweets.each do |tweet| %>
+  <div>
+    <%= tweet.text%>
+  </div>
+<% end %>
