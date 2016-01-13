@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User signs out' do
 
   before :each do
-    User.create(:email => 'newuser2@sb.com', :password => 'password')
+    User.create(email:'newuser@sb.com', password: 'password')
   end 
 
   scenario 'sign out' do
