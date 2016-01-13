@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'User signs in' do
   
-  # before :each do
-  #   User.create(:email => 'newuser@sb.com', :password => 'password')
-  # end 
+  before :each do
+    User.create(:email => 'newuser@sb.com', :password => 'password')
+  end 
 
   scenario 'with valid credentials' do
     visit new_user_session_path
