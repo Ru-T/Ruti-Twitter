@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+/**/*.orig
+
+.DS_store
+app/.DS_Store
