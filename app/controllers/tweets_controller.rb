@@ -1,9 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show]
   before_action :authenticate_user!
-
-  def show
-  end
 
   def new
     @tweet = Tweet.new
@@ -25,10 +21,6 @@ class TweetsController < ApplicationController
   end
   
   private
-  
-  def set_tweet
-    @tweet = Tweet.find(params[:id])
-  end
 
   # strong params
   def tweet_params
