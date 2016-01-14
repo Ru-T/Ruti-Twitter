@@ -25,6 +25,10 @@ class UsersController < ApplicationController
 
   # strong params
   def user_params
-    params.require(:user).permit(:name, :bio, :avatar)
+    params.require(:user).permit(
+      :name, 
+      :bio, 
+      :avatar
+    )
   end
 end
