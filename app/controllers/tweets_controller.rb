@@ -2,9 +2,6 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show]
   before_action :authenticate_user!
 
-  def show
-  end
-
   def new
     @tweet = Tweet.new
   end
