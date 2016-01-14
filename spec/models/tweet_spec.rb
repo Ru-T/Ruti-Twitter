@@ -21,7 +21,12 @@ RSpec.describe Tweet, type: :model do
     it "must have user_id to be valid" do
       expect(FactoryGirl.build(:tweet, text: "I am a tweet.", user_id: nil)).to_not be_valid
     end
+
+    it "must be under 140 characters" do
+      expect(FactoryGirl.build(:tweet, text: "a" * 141, user_id: 1)).to_not be_valid
+    end
   end  
+
 
 
 
