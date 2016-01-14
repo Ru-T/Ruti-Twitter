@@ -13,10 +13,9 @@ Feature: User
     When I visit the "/users/sign_in" path
     And I enter my username or email
     And I enter my password
-    And I click "Log In"
+    And I click "Log in"
     Then I am presented with a flash message that says "You have successfully logged in!"
 
-  @wip
   Scenario: User Logout
     Given I am logged into the site
     When I click "Log Out"

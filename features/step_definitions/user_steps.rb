@@ -36,11 +36,15 @@ When(/^I enter my password$/) do
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
-  click_on 'Log in'
+  click_on arg1
 end
 
 Given(/^I am logged into the site$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_session_path
+  FactoryGirl.create(:user)
+  fill_in 'Email', with: 'newuser@sb.com' 
+  fill_in 'Password', with: 'password' 
+  click_on 'Log in'
 end
 
 When(/^I visit my own profile page$/) do
