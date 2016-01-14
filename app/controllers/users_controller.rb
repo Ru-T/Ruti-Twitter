@@ -10,9 +10,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
@@ -37,6 +34,10 @@ class UsersController < ApplicationController
 
   # strong params
   def user_params
-    params.require(:user).permit(:name, :bio, :avatar)
+    params.require(:user).permit(
+      :name, 
+      :bio, 
+      :avatar
+    )
   end
 end

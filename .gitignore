@@ -16,4 +16,9 @@
 !/log/.keep
 /tmp
 
-public/uploads
+/**/*.orig
+
+/.DS_store
+/app/.DS_Store
+
+/public/uploads/*/
