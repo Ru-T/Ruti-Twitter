@@ -20,3 +20,5 @@
 
 .DS_store
 app/.DS_Store
+
+public/uploads/*/
