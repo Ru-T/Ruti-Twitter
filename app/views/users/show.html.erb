@@ -9,15 +9,17 @@
 </p>
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 
+<% if @user.tweets.any? %>
+  <p> <%= @user.tweets.count %> Tweets</p>
 
-<strong>Tweets:</strong>
+  <strong>Tweets:</strong>
 
-<% @user.tweets.each do |tweet| %>
-  <div>
-    <%= tweet.text %>
-  </div>
-  <div>
-    Posted <%= time_ago_in_words(tweet.created_at) %> ago
-  </div>  
-
-<% end %>
+  <% @user.tweets.each do |tweet| %>
+    <div>
+      <%= tweet.text %>
+    </div>
+    <div>
+      Posted <%= time_ago_in_words(tweet.created_at) %> ago
+    </div>  
+  <% end %>
+<% end %> 
