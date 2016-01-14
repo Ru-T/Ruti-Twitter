@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update]
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def new
+    @user = User.new
+  end
 
   def index
     @users = User.all
@@ -13,6 +25,10 @@ class UsersController < ApplicationController
 
   # strong params
   def user_params
-    params.require(:user).permit(:name, :bio)
+    params.require(:user).permit(
+      :name, 
+      :bio, 
+      :avatar
+    )
   end
 end
