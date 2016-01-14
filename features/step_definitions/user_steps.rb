@@ -23,19 +23,20 @@ Then(/^I am presented with a flash message that says "(.*?)"$/) do |arg1|
 end
 
 When(/^I visit the "(.*?)" path$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  visit arg1
 end
 
 When(/^I enter my username or email$/) do
-  pending # express the regexp above with the code you wish you had
+  FactoryGirl.create(:user)
+  fill_in 'Email', with: 'newuser@sb.com'
 end
 
 When(/^I enter my password$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in 'Password', with: 'password' 
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  click_on 'Log in'
 end
 
 Given(/^I am logged into the site$/) do

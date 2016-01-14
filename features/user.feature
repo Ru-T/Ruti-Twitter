@@ -8,7 +8,6 @@ Feature: User
     And I click submit
     Then I am presented with a flash message that says "Account Successfully Created!"
   
-  @wip
   Scenario: User Login
     Given I am not logged into the site
     When I visit the "/users/sign_in" path
