@@ -5,7 +5,6 @@ Feature: User
     When I visit the "/users/sign_in" page
     And I click
     And I enter my desired email address
-    And I enter my desired username
     And I enter my desired password
     And I click submit
     Then I am presented with a flash message that says "Account Successfully Created!"
