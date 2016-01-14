@@ -16,4 +16,8 @@
   <div>
     <%= tweet.text %>
   </div>
+  <div>
+    Posted <%= time_ago_in_words(tweet.created_at) %> ago
+  </div>  
+
 <% end %>
