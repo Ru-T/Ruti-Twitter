@@ -15,11 +15,7 @@ class TweetsController < ApplicationController
       render :new
     end
   end
-
-  def index
-    @tweets = Tweet.all
-  end
-
+  
   private
 
   # strong params
