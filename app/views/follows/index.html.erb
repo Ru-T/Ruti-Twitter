@@ -1,3 +1,5 @@
+<%= link_to "Create Tweet",  new_tweet_path %>
+
 <h1> Users You Follow </h1>
 
   <% if @follows.any? %>
@@ -9,5 +11,3 @@
       <% end %>
     <% end %>
   <% end %>
-
-  <%= link_to "Create Tweet",  new_tweet_path %>

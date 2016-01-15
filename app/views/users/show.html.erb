@@ -9,11 +9,13 @@
 </p>
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 
-<% if @user.followers.any? %>
-  <p>  Followers <%= @user.followers.count %></p>
-<% end %>
+<p>  Followers <%= @user.followers.count %></p>
 
-<% if @user.followeds.any? %>
+<% if @user == current_user %>
+  <%= link_to follows_path do %>
+    <p>  Following <%= @user.followeds.count %></p>
+  <% end %>
+<% else %>
   <p>  Following <%= @user.followeds.count %></p>
 <% end %>
 

@@ -11,7 +11,7 @@ User.create!(email: "ruti@sb.com",
               )
 end
 
-10.times do
+50.times do
   Tweet.create!(user_id: rand(1...21),
                 text: Faker::Lorem.sentence
                 )
