@@ -2,13 +2,12 @@
 
   <% if @follows.any? %>
     <% @follows.each do |follow| %>
-      <p> <%= follow.followed.name %> </p>
-      <p> <%= follow.followed.bio %> </p>
-
       <% follow.followed.tweets.each do |tweet| %>
+        <p> <%= tweet.user.name %> </p>
         <p> <%= tweet.text %> </p>
         <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
       <% end %>
-
     <% end %>
   <% end %>
+
+  <%= link_to "Create Tweet",  new_tweet_path %>
