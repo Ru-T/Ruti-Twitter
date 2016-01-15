@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-  end    
+  end
 
   def update
     if @user.update(user_params)

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'users#show'
 
   resources :users, only: [:show, :index, :edit, :update, :create]
-  resources :tweets, only: [:show, :index, :create, :new]
+  resources :tweets, only: [:index, :create, :new]
 end

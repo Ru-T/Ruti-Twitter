@@ -3,6 +3,8 @@
   <% @tweets.each do |tweet| %>
     <p> <%= tweet.user.name %> </p>
     <p> <%= tweet.text %> </p>
+    <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
+
   <% end %> 
 
   <%= link_to "Create Tweet",  new_tweet_path %>
