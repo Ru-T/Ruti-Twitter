@@ -1,5 +1,6 @@
 <% if @user == current_user %>
   <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to "Create Tweet",  new_tweet_path %>
 <% end %>
 
 <p>
@@ -11,7 +12,7 @@
   <strong>Bio:</strong>
   <%= @user.bio %>
 </p>
-<%= image_tag(@user.avatar_url) if @user.avatar? %>
+<div id="avatar"><%= image_tag(@user.avatar_url) if @user.avatar? %></div>
 
 <% if @user.tweets.any? %>
   <p> <%= @user.tweets.count %> Tweets</p>
