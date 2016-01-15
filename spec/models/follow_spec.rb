@@ -14,4 +14,5 @@ RSpec.describe Follow, type: :model do
       expect(FactoryGirl.build(:follow, follower_id: nil)).to_not be_valid
     end
   end
+
 end
