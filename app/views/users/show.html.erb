@@ -10,11 +10,11 @@
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 
 <% if @user.followers.any? %>
-  <p> <%= @user.followers.count %> Followers</p>
+  <p>  Followers <%= @user.followers.count %></p>
 <% end %>
 
 <% if @user.followeds.any? %>
-  <p> <%= @user.followeds.count %> Following</p>
+  <p>  Following <%= @user.followeds.count %></p>
 <% end %>
 
 <% if @user.tweets.any? %>

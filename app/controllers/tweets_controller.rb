@@ -19,13 +19,13 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
   end
-  
+
   private
 
   # strong params
   def tweet_params
     params.require(:tweet).permit(
-      :user_id, 
+      :user_id,
       :text
     )
   end

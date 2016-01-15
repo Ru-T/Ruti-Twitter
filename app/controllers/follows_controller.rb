@@ -1,6 +1,10 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @follows = Follow.where(follower_id: current_user.id)
+  end
+
   def create
     @follow = Follow.new(follow_params)
     @follow.follower_id = current_user.id
@@ -27,3 +31,5 @@ class FollowsController < ApplicationController
     )
   end
 end
+
+User.first.followeds.first.tweets
