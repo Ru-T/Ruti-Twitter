@@ -15,13 +15,11 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_follows
 
   def follow(another_user)
-    self.followeds << another_user
-    # active_follows.create(followed_id: another_user.id)
+    Follow.create!(followed_id: another_user.id)
   end
 
   def unfollow(another_user)
-    self.followeds.delete(another_user)
-    # another_user.followers.delete(self)
+    Follow.find_by(followed_id: another_user.id).destroy!
   end
 
 end
