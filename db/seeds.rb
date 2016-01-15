@@ -13,11 +13,14 @@ end
 
 10.times do
   Tweet.create!(user_id: rand(1...21),
-                text: Faker::Lorem.characters(100)
+                text: Faker::Lorem.sentence
                 )
+end
+
+20.times do
+  Follow.create!(follower_id: 1, followed_id: rand(2...21))
 end
 
 10.times do
   Follow.create!(follower_id: rand(1...10), followed_id: rand(11...21))
 end
-  
