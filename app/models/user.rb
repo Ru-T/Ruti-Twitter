@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
 
   def follow(another_user)
     self.followeds << another_user
-    another_user.followers << self
+    # active_follows.create(followed_id: another_user.id)
   end
 
   def unfollow(another_user)
     self.followeds.delete(another_user)
-    another_user.followers.delete(self)
+    # another_user.followers.delete(self)
   end
 
 end
