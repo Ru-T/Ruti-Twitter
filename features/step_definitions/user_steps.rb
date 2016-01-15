@@ -75,9 +75,9 @@ Then(/^I can see my tweets$/) do
 end
 
 When(/^I change my bio$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in 'Bio', with: "This is my bio with edits."
 end
 
 Then(/^I see my new bio$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("This is my bio with edits.")
 end
