@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
         user2 = FactoryGirl.build(:user)
         user1.follow(user2)
         user1.unfollow(user2)
-        expect(user1.followeds).to eq []
-        expect(user2.followers).to eq []
+        expect(user1.followeds).to_not include user2
+        expect(user2.followers).to_not include user1
       end
     end
 end
