@@ -21,13 +21,12 @@ Feature: User
     When I click "Log Out"
     Then I am presented with a flash message that says "You have successfully logged out!"
 
-@wip
   Scenario: View User Profile
     Given I am logged into the site
     When I visit my own profile page
     Then I see my username
-    And I can see my avatar
     And I can see my bio
+    And I can see my avatar
     And I can see the number of tweets I have made
     And I can see my tweets
 

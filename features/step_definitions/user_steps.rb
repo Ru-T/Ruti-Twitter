@@ -56,7 +56,7 @@ Then(/^I see my username$/) do
 end
 
 Then(/^I can see my avatar$/) do
-  expect(page).to include ("/image")
+  expect(page).to have_xpath("Screen_Shot.png")
 end
 
 Then(/^I can see my bio$/) do
@@ -64,10 +64,9 @@ Then(/^I can see my bio$/) do
 end
 
 Then(/^I can see the number of tweets I have made$/) do
-  pending # express the regexp above with the code you wish you had
   # current_user = FactoryGirl.create(:user, email: "newuser2@sb.com")
-  # FactoryGirl.create(:tweet, user: current_user)
-  # expect(page).to have_content("1 Tweets")
+  FactoryGirl.create(:tweet, user: current_user)
+  expect(page).to have_content("1 Tweets")
 end
 
 Then(/^I can see my tweets$/) do

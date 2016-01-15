@@ -4,6 +4,6 @@ FactoryGirl.define do
     user.password "password"
     user.name "NewUser"
     user.bio "This is my bio."
-    user.avatar "/images/avatar.jpg"
+    user.avatar "Screen_Shot.png"
   end
 end
