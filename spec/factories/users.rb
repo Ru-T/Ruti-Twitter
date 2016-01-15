@@ -4,6 +4,6 @@ FactoryGirl.define do
     user.password "password"
     user.name "NewUser"
     user.bio "This is my bio."
-    # user.avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'uploads', 'user', 'avatar', '1', 'Screen_Shot.jpg')) }
+    # user.avatar {fixture_file_upload 'Screen_Shot.png', 'image/png'}
   end
 end
