@@ -7,7 +7,7 @@ Feature: User
     And I enter my desired password
     And I click submit
     Then I am presented with a flash message that says "Account Successfully Created!"
-  
+
   Scenario: User Login
     Given I am not logged into the site
     When I visit the "/users/sign_in" path
@@ -21,7 +21,6 @@ Feature: User
     When I click "Log Out"
     Then I am presented with a flash message that says "You have successfully logged out!"
 
-  @wip
   Scenario: View User Profile
     Given I am logged into the site
     When I visit my own profile page
