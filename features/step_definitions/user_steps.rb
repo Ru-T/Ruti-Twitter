@@ -56,7 +56,6 @@ Then(/^I see my username$/) do
 end
 
 Then(/^I can see my avatar$/) do
-  puts page.find('#avatar')['src']
   page.find('#avatar')
   expect('src').to have_content("/uploads/user/avatar/1/Screen_Shot.png")
 end
