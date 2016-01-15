@@ -9,6 +9,14 @@
 </p>
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 
+<% if @user.followers.any? %>
+  <p> <%= @user.followers.count %> Followers</p>
+<% end %>
+
+<% if @user.followeds.any? %>
+  <p> <%= @user.followeds.count %> Following</p>
+<% end %>
+
 <% if @user.tweets.any? %>
   <p> <%= @user.tweets.count %> Tweets</p>
 
@@ -20,6 +28,6 @@
     </div>
     <div>
       Posted <%= time_ago_in_words(tweet.created_at) %> ago
-    </div>  
+    </div>
   <% end %>
-<% end %> 
+<% end %>
