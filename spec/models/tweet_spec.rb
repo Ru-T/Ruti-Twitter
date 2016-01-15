@@ -4,6 +4,7 @@ RSpec.describe Tweet, type: :model do
 
   describe '.default scope' do
     it 'orders by most recently posted' do
+      tweet_two = FactoryGirl.create(:tweet)
       tweet_one = FactoryGirl.create(:tweet)
       expect(Tweet.first).to eq tweet_one
     end
