@@ -1,0 +1,8 @@
+<h1> Users You Follow </h1>
+
+  <% if @follows.any? %>
+    <% @follows.each do |follow| %>
+      <p> <%= follow.followed.name %> </p>
+      <p> <%= follow.followed.bio %> </p>
+    <% end %>
+  <% end %>
