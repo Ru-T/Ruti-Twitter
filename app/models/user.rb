@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
-  has_many :self_follows, class_name: "Follow",
+  has_many :active_follows, class_name: "Follow",
                           foreign_key: "follower_id"
+  has_many :passive_follows, class_name: "Follow",
+                          foreign_key: "followed_id"
+  has_many :followeds, through: :active_follows
+  has_many :followers, through: :passive_follows
 end
