@@ -17,7 +17,7 @@ end
                 )
 end
 
-followed = User.all[2..21]
-followed.each do |followed|
-  User.first.follow(followed)
+10.times do
+  Follow.create!(follower_id: rand(1...10), followed_id: rand(11...21))
 end
+  
