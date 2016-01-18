@@ -1,10 +1,6 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @follows = Follow.where(follower_id: current_user.id)
-  end
-
   def create
     user = User.find(params[:followed_id])
     current_user.follow(user)
