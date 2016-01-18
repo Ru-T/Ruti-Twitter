@@ -74,11 +74,12 @@ Then(/^I can see my tweets$/) do
 end
 
 When(/^I change my bio$/) do
-  fill_in 'Bio', with: "This is my bio with edits."
+  @new_bio = "This is my bio with edits."
+  fill_in 'Bio', with: @new_bio
 end
 
 Then(/^I see my new bio$/) do
-  expect(page).to have_content("This is my bio with edits.")
+  expect(page).to have_content(@new_bio)
 end
 
 Given(/^I create a Tweet$/) do
