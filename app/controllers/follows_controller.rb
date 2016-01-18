@@ -8,13 +8,7 @@ class FollowsController < ApplicationController
   def create
     user = User.find(params[:followed_id])
     current_user.follow(user)
-    @follow.follower_id = current_user.id
-
-    if @follow.save
-      redirect_to follows_path
-    else
-      render :new
-    end
+    redirect_to user, notice: "User has been followed."
   end
 
   def destroy
