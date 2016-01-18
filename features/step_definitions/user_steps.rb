@@ -56,8 +56,8 @@ Then(/^I see my username$/) do
 end
 
 Then(/^I can see my avatar$/) do
-  div = page.find('#avatar')
-  expect(div).to have_content('./spec/fixtures/images/Screen_Shot.png')
+  visit page.find('#avatar')[:src]
+  page.status_code.should be 200
 end
 
 Then(/^I can see my bio$/) do
