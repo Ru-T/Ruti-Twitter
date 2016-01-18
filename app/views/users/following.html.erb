@@ -10,11 +10,18 @@
         <% end %>
         <p> <%= tweet.text %> </p>
         <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
-        <%# if tweet.favorited? %>
-          <p><%#= link_to "Unfavorite", favorite_path, method: :delete %></p>
-        <%# else %>
-          <p><%= link_to "Favorite", favorites_path(favorite: {tweet_id: tweet.id, user_id: current_user.id}), method: :post%></p>
-        <%# end %>
+
+        <% if current_user.favorited?(tweet) %>
+          <%= form_for(current_user.favorites.find_by_tweet_id(tweet.id),
+                        method: :delete) do |f| %>
+            <%= f.submit "Unfavorite" %>
+          <% end %>
+        <% else %>
+          <%= form_for(current_user.favorites.build) do |f| %>
+            <%= hidden_field_tag :tweet_id, tweet.id %>
+            <%= f.submit "Favorite" %>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

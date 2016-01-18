@@ -2,10 +2,15 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @favorite = Favorite.new(favorite_params)
+    tweet = Tweet.find(params[:tweet_id])
+    current_user.favorite(tweet)
+    redirect_to following_users_path, notice: "Tweet favorited."
   end
 
   def destroy
+    tweet = Favorite.find(params[:id]).tweet
+    current_user.unfavorite(tweet)
+    redirect_to following_users_path, notice: "Tweet unfavorited."
   end
 
   private
