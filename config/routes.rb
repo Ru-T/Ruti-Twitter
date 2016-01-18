@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'users#show'
 
   resources :users, except: [:destroy] do
-    member do
+    collection do
       get :following
     end
   end

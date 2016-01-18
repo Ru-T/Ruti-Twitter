@@ -5,7 +5,9 @@
   <% if current_user.follows.any? %>
     <% current_user.follows.each do |follow| %>
       <% follow.followed.tweets.each do |tweet| %>
-        <p> <%= tweet.user.name %> </p>
+        <%= link_to tweet.user do %>
+          <p> <%= tweet.user.name %> </p>
+        <% end %>
         <p> <%= tweet.text %> </p>
         <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
       <% end %>
