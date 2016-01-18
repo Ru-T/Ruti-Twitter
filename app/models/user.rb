@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     follows.find_by_followed_id(another_user.id).destroy
   end
 
+  def following?(another_user)
+    followed_users.include?(another_user)
+  end
+
 end
