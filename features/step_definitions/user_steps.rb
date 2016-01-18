@@ -1,8 +1,8 @@
 Given(/^I am not logged into the site$/) do
 end
 
-When(/^I visit the "(.*?)" page$/) do |arg1|
-  visit arg1  
+When(/^I visit the "(.*?)" page$/) do |page|
+  visit page
 end
 
 When(/^I enter my desired email address$/) do
@@ -10,7 +10,7 @@ When(/^I enter my desired email address$/) do
 end
 
 When(/^I enter my desired password$/) do
-  fill_in 'Password', with: 'password' 
+  fill_in 'Password', with: 'password'
   fill_in 'Password confirmation', with: 'password'
 end
 
@@ -18,12 +18,12 @@ When(/^I click submit$/) do
   click_on 'Sign up'
 end
 
-Then(/^I am presented with a flash message that says "(.*?)"$/) do |arg1|
-  expect(page).to have_content(arg1)
+Then(/^I am presented with a flash message that says "(.*?)"$/) do |flash|
+  expect(page).to have_content(flash)
 end
 
-When(/^I visit the "(.*?)" path$/) do |arg1|
-  visit arg1
+When(/^I visit the "(.*?)" path$/) do |path|
+  visit path
 end
 
 When(/^I enter my username or email$/) do
@@ -32,49 +32,58 @@ When(/^I enter my username or email$/) do
 end
 
 When(/^I enter my password$/) do
-  fill_in 'Password', with: 'password' 
+  fill_in 'Password', with: 'password'
 end
 
-When(/^I click "(.*?)"$/) do |arg1|
-  click_on arg1
+When(/^I click "(.*?)"$/) do |button|
+  click_on button
 end
 
 Given(/^I am logged into the site$/) do
   visit new_user_session_path
   FactoryGirl.create(:user)
-  fill_in 'Email', with: 'newuser@sb.com' 
-  fill_in 'Password', with: 'password' 
+  fill_in 'Email', with: 'newuser@sb.com'
+  fill_in 'Password', with: 'password'
   click_on 'Log in'
 end
 
 When(/^I visit my own profile page$/) do
-  pending # express the regexp above with the code you wish you had
+ visit root_path
 end
 
 Then(/^I see my username$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("NewUser")
 end
 
 Then(/^I can see my avatar$/) do
-  pending # express the regexp above with the code you wish you had
+  visit page.find('#avatar')[:src]
+  expect(page).to have_css('#avatar')
 end
 
 Then(/^I can see my bio$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("This is my bio.")
 end
 
 Then(/^I can see the number of tweets I have made$/) do
-  pending # express the regexp above with the code you wish you had
+  visit root_path
+  expect(page).to have_content("1 Tweets")
 end
 
 Then(/^I can see my tweets$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("This is a Tweet")
 end
 
 When(/^I change my bio$/) do
-  pending # express the regexp above with the code you wish you had
+  @new_bio = "This is my bio with edits."
+  fill_in 'Bio', with: @new_bio
 end
 
 Then(/^I see my new bio$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(@new_bio)
+end
+
+Given(/^I create a Tweet$/) do
+  click_on 'Create Tweet'
+  fill_in 'Text', with: 'This is a Tweet'
+  click_on 'Create Tweet'
 end
