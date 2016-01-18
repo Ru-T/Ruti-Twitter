@@ -12,7 +12,7 @@
   <strong>Bio:</strong>
   <%= @user.bio %>
 </p>
-<div id="avatar"><%= image_tag(@user.avatar_url) if @user.avatar? %></div>
+<div id="avatar"><%= image_tag(@user.avatar_url(:thumb)) if @user.avatar? %></div>
 
 <% if @user.tweets.any? %>
   <p> <%= @user.tweets.count %> Tweets</p>
