@@ -31,5 +31,3 @@ class FollowsController < ApplicationController
     )
   end
 end
-
-User.first.followeds.first.tweets
