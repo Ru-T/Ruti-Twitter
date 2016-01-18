@@ -57,7 +57,7 @@ end
 
 Then(/^I can see my avatar$/) do
   visit page.find('#avatar')[:src]
-  page.status_code.should be 200
+  expect(page).to have_css('#avatar')
 end
 
 Then(/^I can see my bio$/) do
