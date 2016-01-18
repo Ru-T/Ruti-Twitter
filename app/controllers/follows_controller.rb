@@ -6,19 +6,21 @@ class FollowsController < ApplicationController
   end
 
   def create
-    @follow = Follow.new(follow_params)
+    user = User.find(params[:followed_id])
+    current_user.follow(user)
     @follow.follower_id = current_user.id
 
     if @follow.save
-      redirect_to tweets_path
+      redirect_to follows_path
     else
       render :new
     end
   end
 
   def destroy
-    @follow.destroy
-    redirect_to tweets_path, notice: 'User has been unfollowed.'
+    user = Follow.find(params[:id]).followed
+    current_user.unfollow(user)
+    redirect_to follows_path, notice: 'User has been unfollowed.'
   end
 
   private
