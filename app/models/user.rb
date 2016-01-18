@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
-  has_many :favorites, through: :tweets   
+  has_many :favorites
+  has_many :favorite_tweets, through: :favorites, source: :tweet
+
   has_many :follows, foreign_key: "follower_id"
   has_many :followed_users, through: :follows, source: :followed
 
@@ -26,5 +28,4 @@ class User < ActiveRecord::Base
   def following?(another_user)
     followed_users.include?(another_user)
   end
-
 end
