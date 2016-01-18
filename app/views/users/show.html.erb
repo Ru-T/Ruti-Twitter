@@ -14,17 +14,22 @@
 </p>
 <div id="avatar"><%= image_tag(@user.avatar_url) if @user.avatar? %></div>
 
+<%= render 'follow_form' %>
+
+<p>  Followers <%= @user.followers.count %></p>
+<% if @user == current_user %>
+  <%= link_to following_users_path do %>
+    <p>  Following <%= @user.followed_users.count %></p>
+  <% end %>
+<% else %>
+  <p>  Following <%= @user.followed_users.count %></p>
+<% end %>
+
 <% if @user.tweets.any? %>
   <p> <%= @user.tweets.count %> Tweets</p>
-
   <strong>Tweets:</strong>
-
   <% @user.tweets.each do |tweet| %>
-    <div>
-      <%= tweet.text %>
-    </div>
-    <div>
-      Posted <%= time_ago_in_words(tweet.created_at) %> ago
-    </div>
+    <div><%= tweet.text %></div>
+    <div>Posted <%= time_ago_in_words(tweet.created_at) %> ago</div>
   <% end %>
 <% end %>
