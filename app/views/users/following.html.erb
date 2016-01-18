@@ -10,7 +10,6 @@
         <% end %>
         <p> <%= tweet.text %> </p>
         <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
-
         <% if current_user.favorited?(tweet) %>
           <%= form_for(current_user.favorites.find_by_tweet_id(tweet.id),
                         method: :delete) do |f| %>
