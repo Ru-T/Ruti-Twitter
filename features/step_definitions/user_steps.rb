@@ -56,8 +56,8 @@ Then(/^I see my username$/) do
 end
 
 Then(/^I can see my avatar$/) do
-  page.find('#avatar')
-  expect('src').to have_content("/uploads/user/avatar/1/Screen_Shot.png")
+  div = page.find('#avatar')
+  expect(div).to have_content('./spec/fixtures/images/Screen_Shot.png')
 end
 
 Then(/^I can see my bio$/) do
