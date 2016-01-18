@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'users#show'
 
-  resources :users, only: [:show, :index, :edit, :update, :create] do
+  resources :users, except: [:destroy] do
     member do
       get :following
     end
