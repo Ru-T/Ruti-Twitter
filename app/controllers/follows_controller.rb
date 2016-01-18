@@ -20,7 +20,7 @@ class FollowsController < ApplicationController
   def destroy
     user = Follow.find(params[:id]).followed
     current_user.unfollow(user)
-    redirect_to follows_path, notice: 'User has been unfollowed.'
+    redirect_to user, notice: 'User has been unfollowed.'
   end
 
   private
