@@ -18,7 +18,7 @@
 
 <p>  Followers <%= @user.followers.count %></p>
 <% if @user == current_user %>
-  <%= link_to follows_path do %>
+  <%= link_to following_users_path do %>
     <p>  Following <%= @user.followed_users.count %></p>
   <% end %>
 <% else %>
