@@ -30,19 +30,4 @@ RSpec.describe Tweet, type: :model do
     end
   end
 
-  describe '#favorite' do
-    it "favorites a tweet" do
-      tweet.favorite
-      expect(tweet.favorited?).to eq true
-    end
-  end
-
-  describe '#unfavorite' do
-    it "unfavorites a tweet" do
-      tweet.favorite
-      tweet.unfavorite
-      expect(tweet.favorited?).to eq false
-    end
-  end
-
 end
