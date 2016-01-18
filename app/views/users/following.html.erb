@@ -1,0 +1,15 @@
+<%= link_to "Create Tweet",  new_tweet_path %>
+
+<h1> Users You Follow </h1>
+
+  <% if current_user.follows.any? %>
+    <% current_user.follows.each do |follow| %>
+      <% follow.followed.tweets.each do |tweet| %>
+        <%= link_to tweet.user do %>
+          <p> <%= tweet.user.name %> </p>
+        <% end %>
+        <p> <%= tweet.text %> </p>
+        <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
+      <% end %>
+    <% end %>
+  <% end %>
