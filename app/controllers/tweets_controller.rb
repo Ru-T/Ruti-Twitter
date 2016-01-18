@@ -10,14 +10,10 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
 
     if @tweet.save
-      redirect_to tweets_path
+      redirect_to follows_path
     else
       render :new
     end
-  end
-
-  def index
-    @tweets = Tweet.all
   end
   
   private
@@ -25,7 +21,7 @@ class TweetsController < ApplicationController
   # strong params
   def tweet_params
     params.require(:tweet).permit(
-      :user_id, 
+      :user_id,
       :text
     )
   end
