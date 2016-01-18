@@ -1,8 +1,8 @@
 Given(/^I am not logged into the site$/) do
 end
 
-When(/^I visit the "(.*?)" page$/) do |arg1|
-  visit arg1
+When(/^I visit the "(.*?)" page$/) do |page|
+  visit page
 end
 
 When(/^I enter my desired email address$/) do
@@ -18,12 +18,12 @@ When(/^I click submit$/) do
   click_on 'Sign up'
 end
 
-Then(/^I am presented with a flash message that says "(.*?)"$/) do |arg1|
-  expect(page).to have_content(arg1)
+Then(/^I am presented with a flash message that says "(.*?)"$/) do |flash|
+  expect(page).to have_content(flash)
 end
 
-When(/^I visit the "(.*?)" path$/) do |arg1|
-  visit arg1
+When(/^I visit the "(.*?)" path$/) do |path|
+  visit path
 end
 
 When(/^I enter my username or email$/) do
@@ -35,8 +35,8 @@ When(/^I enter my password$/) do
   fill_in 'Password', with: 'password'
 end
 
-When(/^I click "(.*?)"$/) do |arg1|
-  click_on arg1
+When(/^I click "(.*?)"$/) do |button|
+  click_on button
 end
 
 Given(/^I am logged into the site$/) do
