@@ -26,6 +26,7 @@ Feature: User
     When I visit my own profile page
     Then I see my username
     And I can see my bio
+    And I create a Tweet
     And I can see the number of tweets I have made
     And I can see my tweets
     And I can see my avatar

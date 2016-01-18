@@ -65,9 +65,6 @@ Then(/^I can see my bio$/) do
 end
 
 Then(/^I can see the number of tweets I have made$/) do
-  click_on 'Create Tweet'
-  fill_in 'Text', with: 'This is a Tweet'
-  click_on 'Create Tweet'
   visit root_path
   expect(page).to have_content("1 Tweets")
 end
@@ -82,4 +79,10 @@ end
 
 Then(/^I see my new bio$/) do
   expect(page).to have_content("This is my bio with edits.")
+end
+
+Given(/^I create a Tweet$/) do
+  click_on 'Create Tweet'
+  fill_in 'Text', with: 'This is a Tweet'
+  click_on 'Create Tweet'
 end
