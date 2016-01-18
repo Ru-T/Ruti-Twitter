@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :tweets
   has_many :follows, foreign_key: "follower_id"
-  has_many :followeds, through: :follows
+  has_many :followed_users, through: :follows, source: :followed
 
   has_many :passive_follows, class_name: "Follow",
                           foreign_key: "followed_id"
