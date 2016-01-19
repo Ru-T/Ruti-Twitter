@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :tweets, only: [:create, :new]
   resources :follows, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 end

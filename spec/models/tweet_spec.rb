@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Tweet, type: :model do
 
+  let(:tweet) {FactoryGirl.create(:tweet)}
+  let(:tweet_one) {create(:tweet)}
+
   describe '.default scope' do
     it 'orders by most recently posted' do
       tweet_two = FactoryGirl.create(:tweet)
-      tweet_one = FactoryGirl.create(:tweet)
-      expect(Tweet.first).to eq tweet_one
+      expect(Tweet.first).to eq tweet_two
     end
   end
 

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
+  has_many :favorites
+  has_many :favorite_tweets, through: :favorites, source: :tweet
+
   has_many :follows, foreign_key: "follower_id"
   has_many :followed_users, through: :follows, source: :followed
 
@@ -24,6 +27,18 @@ class User < ActiveRecord::Base
 
   def following?(another_user)
     followed_users.include?(another_user)
+  end
+
+  def favorite(tweet)
+    favorites.create!(tweet_id: tweet.id)
+  end
+
+  def unfavorite(tweet)
+    favorites.find_by_tweet_id(tweet.id).destroy
+  end
+
+  def favorited?(tweet)
+    favorite_tweets.include?(tweet)
   end
 
 end
