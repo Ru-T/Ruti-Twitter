@@ -3,23 +3,21 @@
 <h1> Users You Follow </h1>
 
   <% if current_user.follows.any? %>
-    <% current_user.follows.each do |follow| %>
-      <% follow.followed.tweets.each do |tweet| %>
-        <%= link_to tweet.user do %>
-          <p> <%= tweet.user.name %> </p>
+    <% current_user.feed.each do |tweet| %>
+      <%= link_to tweet.user do %>
+        <p> <%= tweet.user.name %> </p>
+      <% end %>
+      <p> <%= tweet.text %> </p>
+      <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
+      <% if current_user.favorited?(tweet) %>
+        <%= form_for(current_user.favorites.find_by_tweet_id(tweet.id),
+                      method: :delete) do |f| %>
+          <%= f.submit "Unfavorite" %>
         <% end %>
-        <p> <%= tweet.text %> </p>
-        <p> posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
-        <% if current_user.favorited?(tweet) %>
-          <%= form_for(current_user.favorites.find_by_tweet_id(tweet.id),
-                        method: :delete) do |f| %>
-            <%= f.submit "Unfavorite" %>
-          <% end %>
-        <% else %>
-          <%= form_for(current_user.favorites.build) do |f| %>
-            <%= hidden_field_tag :tweet_id, tweet.id %>
-            <%= f.submit "Favorite" %>
-          <% end %>
+      <% else %>
+        <%= form_for(current_user.favorites.build) do |f| %>
+          <%= hidden_field_tag :tweet_id, tweet.id %>
+          <%= f.submit "Favorite" %>
         <% end %>
       <% end %>
     <% end %>
