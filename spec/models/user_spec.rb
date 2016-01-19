@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
     let(:user1) {FactoryGirl.create(:user)}
     let(:user2) {create(:user, email: "shs@test.com")}
     let(:user3) {create(:user, email: "rwr@test.com")}
-    let(:tweet) {create(:tweet, user: user2)}
-    let(:tweet2) {create(:tweet, user: user2)}
+    let(:tweet) {create(:tweet, user: user2, created_at: 3.days.ago)}
+    let(:tweet2) {create(:tweet, user: user2, created_at: 2.days.ago)}
     let(:tweet3) {create(:tweet, user: user3)}
 
     describe '#follow' do
