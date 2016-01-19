@@ -9,7 +9,7 @@ Feature: Follow
 
   Scenario: Unfollow Another User
     Given I am logged into the site
-    When I visit my feed
+    When I visit the "/users/following" page
     And I click on a user's profile
     And I click "Unfollow"
     And I visit my feed
