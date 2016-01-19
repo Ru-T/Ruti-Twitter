@@ -10,12 +10,12 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
 
     if @tweet.save
-      redirect_to follows_path
+      redirect_to following_users_path
     else
       render :new
     end
   end
-  
+
   private
 
   # strong params
