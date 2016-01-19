@@ -13,7 +13,8 @@ end
 
 50.times do
   Tweet.create!(user_id: rand(1...21),
-                text: Faker::Lorem.sentence
+                text: Faker::Lorem.sentence,
+                created_at: rand(10).days.ago
                 )
 end
 

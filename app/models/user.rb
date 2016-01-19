@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
                           foreign_key: "followed_id"
   has_many :followers, through: :passive_follows
 
+  def feed
+    Tweet.where("user_id IN (?)", followed_users.ids)
+         .order('created_at DESC')
+  end
+
   def follow(another_user)
     follows.create!(followed_id: another_user.id)
   end
