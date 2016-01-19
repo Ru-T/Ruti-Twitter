@@ -1,16 +1,14 @@
-When(/^I visit the profile of another user$/) do
-  FactoryGirl.create(:user2)
-  visit user_path/"#{:user2.id}"
+When(/^I visit a user's profile$/) do
+  @user2 = FactoryGirl.create(:user, id: 2, email: "newuser2@sb.com")
+  visit "users/2"
 end
 
 Then(/^I see my followed user's tweet$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I click on a user's profile$/) do
-  pending # express the regexp above with the code you wish you had
+  tweet = FactoryGirl.create(:tweet, user: @user2, text: "This is a tweet!")
+  expect(page).to have_content(tweet)
 end
 
 Then(/^I no longer see my followed user's tweet$/) do
-  pending # express the regexp above with the code you wish you had
+  tweet = FactoryGirl.create(:tweet, user: @user2, text: "This is a tweet!")
+  expect(page).to_not have_content(tweet)
 end

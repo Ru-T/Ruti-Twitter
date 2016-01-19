@@ -41,7 +41,7 @@ end
 
 Given(/^I am logged into the site$/) do
   visit new_user_session_path
-  FactoryGirl.create(:user)
+  @user = FactoryGirl.create(:user)
   fill_in 'Email', with: 'newuser@sb.com'
   fill_in 'Password', with: 'password'
   click_on 'Log in'
