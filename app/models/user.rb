@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   def feed
     Tweet.where("user_id IN (?)", followed_users.ids)
+         .order('created_at DESC')
   end
 
   def follow(another_user)
