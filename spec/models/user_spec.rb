@@ -4,7 +4,10 @@ RSpec.describe User, type: :model do
 
     let(:user1) {FactoryGirl.create(:user)}
     let(:user2) {create(:user, email: "shs@test.com")}
-    let(:tweet) {create(:tweet)}
+    let(:user3) {create(:user, email: "rwr@test.com")}
+    let(:tweet) {create(:tweet, user: user2)}
+    let(:tweet2) {create(:tweet, user: user2)}
+    let(:tweet3) {create(:tweet, user: user3)}
 
     describe '#follow' do
       it "allows a user to follow another" do
@@ -51,6 +54,16 @@ RSpec.describe User, type: :model do
         expect(user1.favorited?(tweet)).to eq true
         user1.unfavorite(tweet)
         expect(user1.favorited?(tweet)).to eq false
+      end
+    end
+
+    describe '#feed' do
+      it "displays tweets by followed users in descending order" do
+        user1.follow(user2)
+        expect(user1.feed).to include tweet
+        expect(user1.feed).to include tweet2
+        expect(user1.feed).to_not include tweet3
+        expect(user1.feed.first).to eq tweet2
       end
     end
 end
