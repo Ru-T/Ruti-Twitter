@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_follows
 
   def feed
-    Tweet.where("user_id IN (?)", followed_users.ids)
+    Tweet.where(user_id: followed_users.ids)
          .order('created_at DESC')
   end
 
