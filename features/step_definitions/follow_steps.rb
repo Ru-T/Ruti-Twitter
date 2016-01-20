@@ -1,5 +1,5 @@
 When(/^I visit a user's profile$/) do
-  user2 = FactoryGirl.create(:user, id: 2, email: "newuser2@sb.com")
+  user2 = FactoryGirl.create(:user, email: "newuser2@sb.com")
   tweet = FactoryGirl.create(:tweet, user: user2, text: "This is a tweet!")
   visit user_path(user2)
 end
