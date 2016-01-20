@@ -1,8 +1,7 @@
-When(/^I fill in a tweet$/) do
-  @tweet = 'This is a Tweet'
-  fill_in 'Text', with: @tweet
+When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, content|
+  fill_in field, with: content
 end
 
-Then(/^I see my tweet$/) do
-  expect(page).to have_content(@tweet)
+Then(/^I should see "(.*?)"$/) do |content|
+  expect(page).to have_content(content)
 end
